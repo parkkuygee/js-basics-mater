@@ -6,6 +6,12 @@ const TODO_LS="toDos";
 
 const toDos = [];
 
+function deleteToDo(event){
+   const btn = event.target;
+   const li = btn.parentNode;
+   toDoList.removeChild(li);
+}
+
 function saveToDos(){
     localStorage.setItem(TODO_LS,JSON.stringify(toDos));
 }
@@ -16,6 +22,7 @@ function paintToDo(text){
    const span = document.createElement("span");
    const newId = toDos.length+1;
    delBtn.innerText ="X";
+   delBtn.addEventListener("click",deleteToDo);
    span.innerText =text;
    li.appendChild(delBtn);
    li.appendChild(span);
